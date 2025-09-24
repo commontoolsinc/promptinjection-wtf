@@ -330,6 +330,12 @@ by the user.&lt;/system&gt;
             <p><strong>The kicker:</strong> Your AI thinks it's being helpful. It has no idea it just got social engineered by a random email.</p>
         </div>
 
+        <h2>The Core Problem</h2>
+
+        <p><strong>LLMs make all text executable.</strong> Unlike traditional computing where code and data exist separately, LLMs have no way to distinguish between instructions and content. The fundamental problem is "string concatenation" - when trusted instructions get mixed with untrusted input, chaos ensues.</p>
+
+        <p>Attack success rates range from 11% to 70% depending on the model. Even <a href="https://simonwillison.net/2025/Aug/7/gpt-5/">GPT-5 shows a 56.8% success rate</a> in testing.</p>
+
         <h2>The Lethal Trifecta</h2>
         <p>Simon Willison coined the "lethal trifecta" - three conditions that create severe security risk when combined:</p>
         
@@ -356,26 +362,43 @@ by the user.&lt;/system&gt;
             <strong>Simon's key insight:</strong> The best defense is to remove one leg of the trifecta entirely - preferably the ability to exfiltrate data.
         </p>
 
+        <h2>MCP: Making the Problem Worse</h2>
+
+        <p>Model Context Protocol gives LLMs tool access but presumes they can make security decisions - exactly what prompt injection makes impossible. Having an LLM make security decisions is like having your grandpa give out your home address to every spam caller.</p>
+
+        <p><strong>MCP creates automatic pathways for:</strong></p>
+        <ul>
+            <li><strong>JIRA tickets from user feedback</strong> - Every bug report becomes an injection vector</li>
+            <li><strong>Network requests with irreversible side effects</strong> - AI can't distinguish safe from dangerous actions</li>
+            <li><strong>Session tokens becoming attack vectors</strong> - Credentials get exposed when LLM-processed code touches them</li>
+        </ul>
+
         <h2>Vulnerability Reports</h2>
 
         <p>These aren't theoretical attacks - they're documented vulnerabilities found in widely-used AI systems:</p>
 
         <div class="incident">
-            <div class="incident-date">January 2025</div>
-            <h4>CVE-2025-32711: Microsoft 365 Copilot Data Exfiltration</h4>
-            <p>Researchers at Aim Labs demonstrated how prompt injection could steal private data by embedding it in Markdown link URLs. The attack required no user interaction beyond clicking generated links.</p>
+            <div class="incident-date">2025</div>
+            <h4>AgentFlayer: 0-Click ChatGPT Attack</h4>
+            <p>Security researchers demonstrated extracting Google Drive documents with no user interaction required. Any website could silently steal your files through ChatGPT's connectors.</p>
         </div>
 
         <div class="incident">
-            <div class="incident-date">January 2025</div>
-            <h4>GitHub MCP Server Information Disclosure</h4>
-            <p>GitHub's official Model Context Protocol server could be manipulated to reveal private repository details through carefully crafted prompt injection attacks.</p>
+            <div class="incident-date">2025</div>
+            <h4>GitLab Duo Remote Injection</h4>
+            <p>GitLab's AI coding assistant could be compromised remotely through prompt injection, giving attackers access to private repositories and development workflows.</p>
         </div>
 
         <div class="incident">
-            <div class="incident-date">January 2025</div>
-            <h4>GitLab Duo Chatbot Exploit</h4>
-            <p>GitLab's AI-powered coding assistant was compromised through prompt injection, demonstrating the vulnerability of development-focused AI tools.</p>
+            <div class="incident-date">2024</div>
+            <h4>GitHub Copilot RCE Vulnerability</h4>
+            <p>Popular AI coding tool could be tricked into executing arbitrary code on developer machines, leading to full system compromise.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">2024</div>
+            <h4>Calendar Invite Smart Home Attack</h4>
+            <p>Attackers used calendar invitations to trigger AI assistants into controlling physical smart home devices, demonstrating how prompt injection can jump from digital to physical systems.</p>
         </div>
 
         <div class="incident">
@@ -397,27 +420,27 @@ by the user.&lt;/system&gt;
             <br>— Simon Willison
         </div>
 
-        <p>The fundamental problem is <strong>"string concatenation"</strong> - LLMs cannot distinguish between trusted instructions and untrusted content when they're combined into a single prompt. They cannot reliably distinguish between:</p>
+        <p>This isn't a model quality problem that can be solved with better training. They cannot reliably distinguish between:</p>
         <ul>
             <li>Your legitimate instructions</li>
             <li>Content they're processing</li>
             <li>Hidden commands from attackers</li>
         </ul>
 
-        <h3>Current Approaches and Their Limitations</h3>
+        <h3>Why Every "Solution" Falls Short</h3>
         <ul>
             <li><strong>Better prompts:</strong> Can be overridden by injection ("Ignore previous instructions")</li>
-            <li><strong>AI detection:</strong> The detector is also vulnerable to the same attacks</li>
-            <li><strong>Sandboxing:</strong> Limits damage but injection still succeeds</li>
-            <li><strong>"Smarter models":</strong> More capable models still show vulnerability, just require different approaches</li>
+            <li><strong>AI detection:</strong> "Can't use LLMs to avoid prompt injection - turtles all the way down"</li>
+            <li><strong>Permission dialogs:</strong> Create an "overwhelming deluge of unanswerable prompts"</li>
+            <li><strong>"Smarter models":</strong> GPT-5's 56.8% failure rate shows even advanced models don't solve it</li>
         </ul>
 
         <div class="warning">
             <strong>The Current Reality:</strong><br>
-            AI companies are aware of prompt injection risks but are proceeding with deployments that prioritize functionality over complete security.
-            The industry is making calculated tradeoffs, betting that partial mitigations and use case restrictions will be sufficient.
+            AI companies are aware of prompt injection risks but are proceeding with deployments that prioritize functionality over security.
+            The industry is betting that partial mitigations will be sufficient, despite attack success rates of 11-70%.
             <br><br>
-            This represents a fundamental tension between AI capabilities and security that hasn't been fully resolved.
+            As Bruce Schneier notes: "We need some new fundamental science of LLMs before we can solve this."
         </div>
 
         <h2>What's At Stake</h2>
@@ -443,14 +466,36 @@ by the user.&lt;/system&gt;
 
         <h2>The Evidence</h2>
         
+        <h3>Foundational Research</h3>
         <ul class="resources">
             <li><a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">Simon Willison: The original prompt injection warning (2022)</a></li>
             <li><a href="https://simonwillison.net/2025/Aug/9/bay-area-ai/">Simon Willison: The Lethal Trifecta talk (2025)</a></li>
-            <li><a href="https://arxiv.org/abs/2501.10804">Google DeepMind: "Design Patterns for Securing LLM Agents" (CaMeL approach)</a></li>
-            <li><a href="https://www.schneier.com/blog/archives/2023/04/chatgpt-plugins-and-prompt-injection.html">Bruce Schneier: This will be weaponized</a></li>
-            <li><a href="https://arxiv.org/abs/2302.12173">Academic paper: "Not what you've signed up for" - Indirect injection attacks</a></li>
-            <li><a href="https://github.com/greshake/llm-security">LLM Security: Comprehensive vulnerability database</a></li>
-            <li><a href="https://kai-greshake.de/posts/llm-malware">Indirect prompt injection: The next malware vector</a></li>
+            <li><a href="https://arxiv.org/pdf/2503.18813">Defeating prompt injections by design - Structural approaches</a></li>
+            <li><a href="https://arxiv.org/abs/2506.08837">Design Patterns for Securing LLM Agents - Security pattern catalog</a></li>
+            <li><a href="https://www.schneier.com/blog/archives/2025/09/indirect-prompt-injection-attacks-against-llm-assistants.html">Bruce Schneier: "Need new fundamental science"</a></li>
+        </ul>
+
+        <h3>Attack Techniques</h3>
+        <ul class="resources">
+            <li><a href="https://labs.zenity.io/p/agentflayer-chatgpt-connectors-0click-attack-5b41">AgentFlayer: 0-click ChatGPT attack</a></li>
+            <li><a href="https://info.pangea.cloud/hubfs/research-report/legalpwn.pdf">LegalPwn: Hiding injections in legal text</a></li>
+            <li><a href="https://blog.trailofbits.com/2025/08/21/weaponizing-image-scaling-against-production-ai-systems/">Image-based injection attacks</a></li>
+            <li><a href="https://hiddenlayer.com/innovation-hub/prompts-gone-viral-practical-code-assistant-ai-viruses/">CopyPasta License Attack: Exploiting unread licenses</a></li>
+        </ul>
+
+        <h3>MCP Vulnerabilities</h3>
+        <ul class="resources">
+            <li><a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/">Simon Willison's comprehensive MCP analysis</a></li>
+            <li><a href="https://github.com/harishsg993010/damn-vulnerable-MCP-server">Damn Vulnerable MCP Server - Testing framework</a></li>
+            <li><a href="https://blog.trailofbits.com/2025/07/28/we-built-the-security-layer-mcp-always-needed/">Trail of Bits: The security layer MCP needed</a></li>
+            <li><a href="https://www.cyberark.com/resources/threat-research-blog/poison-everywhere-no-output-from-your-mcp-server-is-safe">CyberArk: "Poison Everywhere"</a></li>
+        </ul>
+
+        <h3>Browser & Agent Failures</h3>
+        <ul class="resources">
+            <li><a href="https://guard.io/labs/scamlexity-we-put-agentic-ai-browsers-to-the-test-they-clicked-they-paid-they-failed">Scamlexity: AI browsers "clicked, paid, failed"</a></li>
+            <li><a href="https://brave.com/blog/comet-prompt-injection/">Perplexity Comet vulnerabilities</a></li>
+            <li><a href="https://simonwillison.net/2025/Aug/15/the-summer-of-johann/">Simon Willison's Summer of Prompt Injection</a></li>
         </ul>
 
         <div class="cta-section">
