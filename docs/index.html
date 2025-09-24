@@ -443,6 +443,24 @@ by the user.&lt;/system&gt;
             As Bruce Schneier notes: "We need some new fundamental science of LLMs before we can solve this."
         </div>
 
+        <h2>What Would Actually Work</h2>
+
+        <p>The path forward isn't about making LLMs smarter or less gullible - it's about <strong>not letting them make security decisions at all</strong>.</p>
+
+        <p>A structural solution would require:</p>
+        <ul>
+            <li><strong>Data flow tracking</strong> - Systems that know exactly where information comes from and where it goes</li>
+            <li><strong>Granular permissions</strong> - Not "trust this app forever" but "this specific data can do this specific thing"</li>
+            <li><strong>Composable components</strong> - Replace black-box apps with transparent, analyzable pieces</li>
+            <li><strong>Mechanical enforcement</strong> - Security policies that can't be overridden by confused AIs</li>
+        </ul>
+
+        <p>Think: instead of asking an LLM "should I send this email?", the system mechanistically knows "emails containing data from untrusted sources cannot be sent to external addresses."</p>
+
+        <p>There are <a href="https://arxiv.org/pdf/2503.18813">some promising approaches</a> that demonstrate this by separating control flow from data flow. But this requires a complete architectural redesign that's difficult to retrofit to existing systems.</p>
+
+        <p><strong>Why this is difficult:</strong> Current apps are designed as opaque monoliths where once data enters, everything becomes maximally tainted. There's no way to track what data is sensitive versus safe within an application. The security model assumes you either trust the entire app or you don't - there's no middle ground for "trust this part but not that part."</p>
+
         <h2>What's At Stake</h2>
         
         <h3>Today's AI Has Access To:</h3>
