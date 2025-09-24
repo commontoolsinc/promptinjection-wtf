@@ -1,3 +1,5 @@
+<img src="docs/logo.png" alt="Prompt Injection Logo" width="200" />
+
 # promptinjection.wtf
 
 A resource for understanding prompt injection and why it matters.
