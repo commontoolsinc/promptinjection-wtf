@@ -2,6 +2,8 @@
 
 A resource for understanding prompt injection and why it matters.
 
+**🌐 Live site:** https://promptinjection.wtf
+
 ## About
 
 Prompt injection is when AI systems can be tricked into ignoring their instructions. It's a fundamental security flaw that every major AI system currently has, and there's no clear fix.
