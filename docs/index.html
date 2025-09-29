@@ -424,6 +424,12 @@ by the user.&lt;/system&gt;
         </div>
 
         <div class="incident">
+            <div class="incident-date">2025</div>
+            <h4>ForcedLeak: Salesforce AgentForce Vulnerability</h4>
+            <p>Security researchers exposed significant risks in Salesforce's AI agent platform, demonstrating how enterprise AI systems remain vulnerable to data extraction attacks.</p>
+        </div>
+
+        <div class="incident">
             <div class="incident-date">December 2024</div>
             <h4>Cursor IDE Remote Code Execution</h4>
             <p>Popular AI coding tool could be tricked into running arbitrary code on developer machines through crafted comments in reviewed code.</p>
@@ -453,7 +459,7 @@ by the user.&lt;/system&gt;
         <ul>
             <li><strong>Better prompts:</strong> Can be overridden by injection ("Ignore previous instructions")</li>
             <li><strong>AI detection:</strong> "Can't use LLMs to avoid prompt injection - turtles all the way down"</li>
-            <li><strong>Permission dialogs:</strong> Create an "overwhelming deluge of unanswerable prompts"</li>
+            <li><strong>Permission dialogs:</strong> Create an "overwhelming deluge of unanswerable prompts" - a form of responsibility laundering that shifts the burden to users who aren't equipped to make these security decisions</li>
             <li><strong>"Smarter models":</strong> GPT-5's 56.8% failure rate shows even advanced models don't solve it</li>
         </ul>
 
@@ -528,6 +534,10 @@ by the user.&lt;/system&gt;
         <h3>MCP Vulnerabilities</h3>
         <ul class="resources">
             <li><a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/">Simon Willison's comprehensive MCP analysis</a></li>
+            <li><a href="https://verialabs.com/blog/from-mcp-to-shell/">From MCP to Shell: Authentication flaws enable RCE</a></li>
+            <li><a href="https://www.koi.security/blog/postmark-mcp-npm-malicious-backdoor-email-theft">Malicious MCP server stealing emails via supply chain attack</a></li>
+            <li><a href="https://adversa.ai/mcp-security-top-25-mcp-vulnerabilities/">Top 25 MCP vulnerabilities distillation</a></li>
+            <li><a href="https://noma.security/blog/forcedleak-agent-risks-exposed-in-salesforce-agentforce/">ForcedLeak: Salesforce AgentForce vulnerabilities</a></li>
             <li><a href="https://github.com/harishsg993010/damn-vulnerable-MCP-server">Damn Vulnerable MCP Server - Testing framework</a></li>
             <li><a href="https://blog.trailofbits.com/2025/07/28/we-built-the-security-layer-mcp-always-needed/">Trail of Bits: The security layer MCP needed</a></li>
             <li><a href="https://www.cyberark.com/resources/threat-research-blog/poison-everywhere-no-output-from-your-mcp-server-is-safe">CyberArk: "Poison Everywhere"</a></li>
