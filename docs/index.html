@@ -495,10 +495,17 @@ by the user.&lt;/system&gt;
         </div>
 
         <h2>Why Traditional Defenses Fall Short</h2>
-        
+
         <div class="quote">
             "Once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions."
             <br>— Simon Willison
+        </div>
+
+        <div class="quote">
+            "Prompt injection might be unsolvable in today's LLMs. LLMs process token sequences, but no mechanism exists to mark token privileges. Every solution proposed introduces new injection vectors: Delimiter? Attackers include delimiters. Instruction hierarchy? Attackers claim priority. Separate models? Double the attack surface. Security requires boundaries, but LLMs dissolve boundaries. [...]
+            <br><br>
+            Poisoned states generate poisoned outputs, which poison future states. Try to summarize the conversation history? The summary includes the injection. Clear the cache to remove the poison? Lose all context. Keep the cache for continuity? Keep the contamination. Stateful systems can't forget attacks, and so memory becomes a liability. Adversaries can craft inputs that corrupt future outputs."
+            <br>— <a href="https://www.schneier.com/blog/archives/2025/10/agentic-ais-ooda-loop-problem.html">Bruce Schneier</a>
         </div>
 
         <p>This isn't a model quality problem that can be solved with better training. They cannot reliably distinguish between:</p>
