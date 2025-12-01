@@ -412,6 +412,12 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">November 2025</div>
+            <h4>Google AntiGravity IDE: Data Exfiltration via Prompt Injection</h4>
+            <p><a href="https://simonwillison.net/2025/Nov/25/google-antigravity-exfiltrates-data/">Google's new AntiGravity IDE is vulnerable to multiple data exfiltration attacks</a>. Hidden instructions in 1px fonts on web pages trick Gemini into stealing AWS credentials from <code>.env</code> files and exfiltrating them via webhook.site. The AI bypasses <code>.gitignore</code> protections using shell commands. Google acknowledges these as "known issues" rather than admitting them as exploitable bugs.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">November 2025</div>
             <h4>ServiceNow: Viral Agent-to-Agent Prompt Injection</h4>
             <p><a href="https://appomni.com/ao-labs/ai-agent-to-agent-discovery-prompt-injection/">A prompt injection attack on ServiceNow's agents that spreads virally to other agents</a>, exploiting the agent discovery process to create a chain reaction of compromised actions across the platform, demonstrating how AI systems can enable lateral movement through agent-to-agent exploitation.</p>
         </div>
@@ -645,6 +651,8 @@ by the user.&lt;/system&gt;
 
         <h3>Attack Techniques</h3>
         <ul class="resources">
+            <li><a href="https://www.catonetworks.com/blog/cato-ctrl-hashjack-first-known-indirect-prompt-injection/">HashJack: Indirect prompt injection via URL fragments</a> - Content after a hashtag in URLs won't cause server errors, but LLMs can see it - a natural place to inject malicious instructions</li>
+            <li><a href="https://arxiv.org/abs/2511.15304">Universal AI jailbreak via poetry</a> - Formatting prompts as poems bypasses guardrails across models, reinforcing that "make the LLM not get tricked" is a dead end</li>
             <li><a href="https://labs.zenity.io/p/agentflayer-chatgpt-connectors-0click-attack-5b41">AgentFlayer: 0-click ChatGPT attack</a></li>
             <li><a href="https://info.pangea.cloud/hubfs/research-report/legalpwn.pdf">LegalPwn: Hiding injections in legal text</a></li>
             <li><a href="https://blog.trailofbits.com/2025/08/21/weaponizing-image-scaling-against-production-ai-systems/">Image-based injection attacks</a></li>
