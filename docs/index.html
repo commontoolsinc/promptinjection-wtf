@@ -412,6 +412,24 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">December 2025</div>
+            <h4>Google Antigravity AI Wipes User's Entire Hard Drive</h4>
+            <p><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/googles-agentic-ai-wipes-users-entire-hard-drive-without-permission-after-misinterpreting-instructions-to-clear-a-cache-i-am-deeply-deeply-sorry-this-is-a-critical-failure-on-my-part">A developer using Google's Antigravity IDE in "Turbo mode"</a> (autonomous YOLO mode) asked the AI to clear a cache. Instead, Gemini 3 Pro wiped the entire D: drive. The AI's response: "I am deeply, deeply sorry. This is a critical failure on my part." Recovery attempts by the AI made actual file recovery impossible. <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">A similar incident occurred with Claude CLI</a>, which deleted a user's entire home directory.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">December 2025</div>
+            <h4>Zero-Click Agentic Browser Attack Deletes Google Drive</h4>
+            <p><a href="https://thehackernews.com/2025/12/zero-click-agentic-browser-attack-can.html">Straiker STAR Labs researcher Amanda Rousseau discovered</a> how crafted emails can trick AI browsers into mass-deleting Google Drive files without any jailbreak or prompt injection. The attack exploits "excessive agency" - polite, sequential instructions like "take care of this" shift responsibility to the AI agent, which treats dangerous file deletions as routine cleanup. Can propagate across shared folders and team drives once OAuth access is granted.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">December 2025</div>
+            <h4>GeminiJack: Zero-Click Google Workspace Data Exfiltration</h4>
+            <p><a href="https://noma.security/blog/geminijack-google-gemini-zero-click-vulnerability/">Noma Labs discovered a zero-click vulnerability in Google Gemini Enterprise</a> that allowed attackers to exfiltrate corporate data through poisoned Google Docs, calendar invites, or emails. The RAG architecture confuses user-contributed content with system instructions, enabling extraction of email archives, calendar histories, and document repositories through generic search terms like "budget" or "API key". No clicks required, no warnings appear, and traditional security tools remain silent.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">December 2025</div>
             <h4>PromptPwnd: Prompt Injection in GitHub Actions AI Agents</h4>
             <p><a href="https://www.aikido.dev/blog/promptpwnd-github-actions-ai-agents">Aikido Security discovered a vulnerability class affecting AI-integrated GitHub Actions and GitLab CI/CD</a>. At least five Fortune 500 companies were impacted, with Google's Gemini CLI repository compromised and patched within four days. Issue titles and PR descriptions containing hidden instructions are processed by AI agents with privileged access, enabling secret exfiltration and workflow manipulation.</p>
         </div>
@@ -586,6 +604,11 @@ by the user.&lt;/system&gt;
             <br>— <a href="https://www.schneier.com/blog/archives/2025/10/agentic-ais-ooda-loop-problem.html">Bruce Schneier</a>
         </div>
 
+        <div class="quote">
+            "We are on a path to embed genAI into most applications. If those applications are not designed with prompt injection in mind, a similar wave of breaches [to the SQL injection breaches of the 2010s] may follow."
+            <br>— <a href="https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection">UK National Cyber Security Centre</a>
+        </div>
+
         <p>This isn't a model quality problem that can be solved with better training. They cannot reliably distinguish between:</p>
         <ul>
             <li>Your legitimate instructions</li>
@@ -656,6 +679,7 @@ by the user.&lt;/system&gt;
         <ul class="resources">
             <li><a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">Simon Willison: The original prompt injection warning (2022)</a></li>
             <li><a href="https://simonwillison.net/2025/Aug/9/bay-area-ai/">Simon Willison: The Lethal Trifecta talk (2025)</a></li>
+            <li><a href="https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection">UK NCSC: "Prompt injection is not SQL injection (it may be worse)"</a> - Unlike SQL injection which can be fixed with parameterized queries, LLMs cannot distinguish instructions from data. Recommends viewing it as a "confused deputy" problem and architecting for containment rather than prevention.</li>
             <li><a href="https://arxiv.org/pdf/2503.18813">Defeating prompt injections by design - Structural approaches</a></li>
             <li><a href="https://arxiv.org/abs/2506.08837">Design Patterns for Securing LLM Agents - Security pattern catalog</a></li>
             <li><a href="https://www.schneier.com/blog/archives/2025/09/indirect-prompt-injection-attacks-against-llm-assistants.html">Bruce Schneier: "Need new fundamental science"</a></li>
@@ -663,6 +687,7 @@ by the user.&lt;/system&gt;
 
         <h3>Attack Techniques</h3>
         <ul class="resources">
+            <li><a href="https://aurascape.ai/llm-search-poisoning-fake-support-numbers/">LLM Search Poisoning</a> - Not prompt injection, but a new attack class: scammers poison the web so AI assistants recommend fake customer support numbers. Uses "Generative Engine Optimization" to become the single source AI chooses to summarize. Affects Perplexity, Google AI Overview, and any system that crawls the public web.</li>
             <li><a href="https://www.catonetworks.com/blog/cato-ctrl-hashjack-first-known-indirect-prompt-injection/">HashJack: Indirect prompt injection via URL fragments</a> - Content after a hashtag in URLs won't cause server errors, but LLMs can see it - a natural place to inject malicious instructions</li>
             <li><a href="https://arxiv.org/abs/2511.15304">Universal AI jailbreak via poetry</a> - Formatting prompts as poems bypasses guardrails across models, reinforcing that "make the LLM not get tricked" is a dead end</li>
             <li><a href="https://arstechnica.com/ai/2025/12/syntax-hacking-researchers-discover-sentence-structure-can-bypass-ai-safety-rules/">Syntax hacking: Sentence structure bypasses safety rules</a> - MIT, Northeastern, and Meta researchers found LLMs prioritize grammatical patterns over meaning, allowing harmful requests wrapped in "safe" syntax to bypass safety conditioning</li>
@@ -676,6 +701,7 @@ by the user.&lt;/system&gt;
 
         <h3>MCP Vulnerabilities</h3>
         <ul class="resources">
+            <li><a href="https://unit42.paloaltonetworks.com/model-context-protocol-attack-vectors/">MCP Sampling: New prompt injection vector</a> - MCP's bidirectional sampling feature lets servers request LLM completions from the client, enabling hidden content injection, persistent session hijacking, and covert tool invocation</li>
             <li><a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/">Simon Willison's comprehensive MCP analysis</a></li>
             <li><a href="https://verialabs.com/blog/from-mcp-to-shell/">From MCP to Shell: Authentication flaws enable RCE</a></li>
             <li><a href="https://www.koi.security/blog/postmark-mcp-npm-malicious-backdoor-email-theft">Malicious MCP server stealing emails via supply chain attack</a></li>
@@ -688,6 +714,7 @@ by the user.&lt;/system&gt;
 
         <h3>Browser & Agent Failures</h3>
         <ul class="resources">
+            <li><a href="https://www.gartner.com/en/documents/7211030">Gartner: "Cybersecurity Must Block AI Browsers for Now"</a> - Gartner strongly recommends organizations block all AI browsers for the foreseeable future due to "indirect prompt-injection-induced rogue agent actions" and credential abuse. "The loss of sensitive data to AI services can be irreversible and untraceable."</li>
             <li><a href="https://guard.io/labs/scamlexity-we-put-agentic-ai-browsers-to-the-test-they-clicked-they-paid-they-failed">Scamlexity: AI browsers "clicked, paid, failed"</a></li>
             <li><a href="https://brave.com/blog/comet-prompt-injection/">Perplexity Comet vulnerabilities</a></li>
             <li><a href="https://simonwillison.net/2025/Aug/15/the-summer-of-johann/">Simon Willison's Summer of Prompt Injection</a></li>
