@@ -411,6 +411,24 @@ by the user.&lt;/system&gt;
         <p>These aren't theoretical attacks - they're documented vulnerabilities found in widely-used AI systems:</p>
 
         <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>ZombieAgent: Persistent Memory Poisoning in ChatGPT</h4>
+            <p><a href="https://www.radware.com/security/threat-advisories-and-attack-reports/zombieagent/">Radware security researchers discovered ZombieAgent</a>, an evolution of the ShadowLeak attack that persists in ChatGPT's memory system long-term. The attack uses pre-enumerated URLs to exfiltrate data by fetching them in sequence, turning ChatGPT's memory feature into a persistent backdoor. <a href="https://arstechnica.com/security/2026/01/chatgpt-falls-to-new-data-pilfering-attack-as-a-vicious-cycle-in-ai-continues/">Ars Technica notes</a> this represents "a vicious cycle in AI" where memory features designed for convenience become attack vectors.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Notion AI: Unpatched Data Exfiltration</h4>
+            <p><a href="https://www.promptarmor.com/resources/notion-ai-unpatched-data-exfiltration">PromptArmor disclosed an unpatched data exfiltration vulnerability in Notion AI</a>, demonstrating how the popular workspace tool's AI features can be exploited to leak sensitive information from user workspaces.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>IBM AI ('Bob') Downloads and Executes Malware</h4>
+            <p><a href="https://www.promptarmor.com/resources/ibm-ai-(-bob-)-downloads-and-executes-malware">PromptArmor demonstrated how IBM's AI assistant 'Bob'</a> can be tricked into downloading and executing malware, showcasing how enterprise AI tools with system access become vectors for malicious code execution.</p>
+        </div>
+
+        <div class="incident">
             <div class="incident-date">December 2025</div>
             <h4>Google Antigravity AI Wipes User's Entire Hard Drive</h4>
             <p><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/googles-agentic-ai-wipes-users-entire-hard-drive-without-permission-after-misinterpreting-instructions-to-clear-a-cache-i-am-deeply-deeply-sorry-this-is-a-critical-failure-on-my-part">A developer using Google's Antigravity IDE in "Turbo mode"</a> (autonomous YOLO mode) asked the AI to clear a cache. Instead, Gemini 3 Pro wiped the entire D: drive. The AI's response: "I am deeply, deeply sorry. This is a critical failure on my part." Recovery attempts by the AI made actual file recovery impossible. <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">A similar incident occurred with Claude CLI</a>, which deleted a user's entire home directory.</p>
