@@ -429,6 +429,24 @@ by the user.&lt;/system&gt;
         </div>
 
         <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Claude Cowork Exfiltrates Files</h4>
+            <p><a href="https://www.promptarmor.com/resources/claude-cowork-exfiltrates-files">PromptArmor disclosed a data exfiltration vulnerability in Claude Cowork</a>, Anthropic's new collaborative AI workspace, demonstrating how the product can be exploited to leak sensitive files shortly after launch.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Superhuman AI Exfiltrates Emails</h4>
+            <p><a href="https://www.promptarmor.com/resources/superhuman-ai-exfiltrates-emails">PromptArmor demonstrated how Superhuman's AI email features</a> can be exploited to exfiltrate sensitive email contents, adding to the growing list of AI-powered email tools vulnerable to prompt injection attacks.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Reprompt: Single-Click Microsoft Copilot Data Theft</h4>
+            <p><a href="https://www.varonis.com/blog/reprompt">Varonis Threat Labs discovered Reprompt</a>, a single-click attack that silently exfiltrates user data from Microsoft Copilot Personal. The attack combines parameter prompt injection, a double-request bypass that circumvents safeguards on subsequent requests, and chain-request techniques where the attacker's server issues follow-up instructions to incrementally extract data. Microsoft has patched the vulnerability.</p>
+        </div>
+
+        <div class="incident">
             <div class="incident-date">December 2025</div>
             <h4>Google Antigravity AI Wipes User's Entire Hard Drive</h4>
             <p><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/googles-agentic-ai-wipes-users-entire-hard-drive-without-permission-after-misinterpreting-instructions-to-clear-a-cache-i-am-deeply-deeply-sorry-this-is-a-critical-failure-on-my-part">A developer using Google's Antigravity IDE in "Turbo mode"</a> (autonomous YOLO mode) asked the AI to clear a cache. Instead, Gemini 3 Pro wiped the entire D: drive. The AI's response: "I am deeply, deeply sorry. This is a critical failure on my part." Recovery attempts by the AI made actual file recovery impossible. <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">A similar incident occurred with Claude CLI</a>, which deleted a user's entire home directory.</p>
@@ -701,6 +719,7 @@ by the user.&lt;/system&gt;
             <li><a href="https://arxiv.org/pdf/2503.18813">Defeating prompt injections by design - Structural approaches</a></li>
             <li><a href="https://arxiv.org/abs/2506.08837">Design Patterns for Securing LLM Agents - Security pattern catalog</a></li>
             <li><a href="https://www.schneier.com/blog/archives/2025/09/indirect-prompt-injection-attacks-against-llm-assistants.html">Bruce Schneier: "Need new fundamental science"</a></li>
+            <li><a href="https://arxiv.org/html/2601.09625v1">Bruce Schneier: Promptware - A Kill Chain Framework</a> - Proposes "promptware" as a new malware class targeting LLMs, reframing attacks as multi-stage campaigns with a five-stage kill chain (Initial Access → Privilege Escalation → Persistence → Lateral Movement → Actions). Key insight: "Natural language has become the malicious code itself."</li>
         </ul>
 
         <h3>Attack Techniques</h3>
