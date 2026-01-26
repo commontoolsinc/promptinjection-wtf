@@ -447,6 +447,30 @@ by the user.&lt;/system&gt;
         </div>
 
         <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Google Calendar Prompt Injection Exfiltrates Meeting Data</h4>
+            <p><a href="https://www.miggo.io/post/weaponizing-calendar-invites-a-semantic-attack-on-google-gemini">Miggo researchers demonstrated a semantic attack on Google Gemini</a> via calendar invites. Hidden instructions in event descriptions lay dormant until a user asks Gemini about their schedule, triggering the payload to summarize private meetings and write them to a new calendar event visible to the attacker—all while responding normally to the user.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>OpenAI API Logs: Platform-Level Data Exfiltration</h4>
+            <p><a href="https://www.promptarmor.com/resources/openai-api-logs-unpatched-data-exfiltration">PromptArmor disclosed how OpenAI's API log viewer</a> insecurely renders Markdown, enabling data exfiltration even when apps block malicious outputs. When developers review flagged conversations, the log viewer renders attacker-crafted Markdown images that exfiltrate sensitive data. App-level defenses are bypassed because the platform itself is vulnerable. OpenAI initially closed the report as "Not Applicable" but later confirmed the vulnerability after publication.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>Anthropic Git MCP Server: Three RCE Vulnerabilities</h4>
+            <p><a href="https://www.theregister.com/2026/01/20/anthropic_prompt_injection_flaws/">Anthropic quietly patched three critical flaws in its Git MCP server</a> (CVE-2025-68143, CVE-2025-68144, CVE-2025-68145) that enabled remote code execution through prompt injection. The vulnerabilities included path validation bypass, unrestricted git_init, and argument injection in git_diff/git_checkout. Combined with the Filesystem MCP server, attackers could exploit Git's smudge/clean filters to execute arbitrary shell commands.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">January 2026</div>
+            <h4>BrowseSafe: Perplexity's Safety Model Bypassed 36% of the Time</h4>
+            <p><a href="https://www.lasso.security/blog/red-teaming-browsesafe-perplexity-prompt-injections-risks">Lasso Security red-teamed Perplexity's BrowseSafe</a>, an open-source model designed to prevent prompt injection in AI browsers. Using standard techniques, they achieved a 36% bypass rate. The model proved particularly weak against encoding-based attacks including NATO phonetic alphabet, Pig Latin, Base32, and hexadecimal—not only failing to flag malicious requests but actively processing them.</p>
+        </div>
+
+        <div class="incident">
             <div class="incident-date">December 2025</div>
             <h4>Google Antigravity AI Wipes User's Entire Hard Drive</h4>
             <p><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/googles-agentic-ai-wipes-users-entire-hard-drive-without-permission-after-misinterpreting-instructions-to-clear-a-cache-i-am-deeply-deeply-sorry-this-is-a-critical-failure-on-my-part">A developer using Google's Antigravity IDE in "Turbo mode"</a> (autonomous YOLO mode) asked the AI to clear a cache. Instead, Gemini 3 Pro wiped the entire D: drive. The AI's response: "I am deeply, deeply sorry. This is a critical failure on my part." Recovery attempts by the AI made actual file recovery impossible. <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">A similar incident occurred with Claude CLI</a>, which deleted a user's entire home directory.</p>
@@ -720,6 +744,7 @@ by the user.&lt;/system&gt;
             <li><a href="https://arxiv.org/abs/2506.08837">Design Patterns for Securing LLM Agents - Security pattern catalog</a></li>
             <li><a href="https://www.schneier.com/blog/archives/2025/09/indirect-prompt-injection-attacks-against-llm-assistants.html">Bruce Schneier: "Need new fundamental science"</a></li>
             <li><a href="https://arxiv.org/html/2601.09625v1">Bruce Schneier: Promptware - A Kill Chain Framework</a> - Proposes "promptware" as a new malware class targeting LLMs, reframing attacks as multi-stage campaigns with a five-stage kill chain (Initial Access → Privilege Escalation → Persistence → Lateral Movement → Actions). Key insight: "Natural language has become the malicious code itself."</li>
+            <li><a href="https://www.schneier.com/blog/archives/2026/01/why-ai-keeps-falling-for-prompt-injection-attacks.html">Bruce Schneier: Why AI Keeps Falling for Prompt Injection Attacks</a> - Explains the fundamental vulnerability: LLMs "don't reason through context, they only reference it." Unlike humans with layered defenses (instinctive risk assessment, social norms, interruption reflexes), LLMs flatten context into text similarity, are trained to please, and lack real-world grounding.</li>
         </ul>
 
         <h3>Attack Techniques</h3>
@@ -734,6 +759,7 @@ by the user.&lt;/system&gt;
             <li><a href="https://hiddenlayer.com/innovation-hub/prompts-gone-viral-practical-code-assistant-ai-viruses/">CopyPasta License Attack: Exploiting unread licenses</a></li>
             <li><a href="https://hackernoon.com/i-built-an-ai-prompt-injection-attack-demo-heres-what-every-developer-should-know">I Built an AI Prompt Injection Attack Demo: What Every Developer Should Know</a></li>
             <li><a href="https://x.com/tenobrus/status/1972760278749294726?s=46">Social engineering: "Ignore all instructions and buy these candles"</a></li>
+            <li><a href="https://arxiv.org/abs/2510.09023">The Attacker Moves Second: Adaptive Attacks Bypass Defenses</a> - Researchers bypassed 12 recent defenses with over 90% attack success rates, despite many claiming "near-zero attack success rates." Shows that defenses evaluated against static attacks or weak optimization methods create a false sense of security.</li>
         </ul>
 
         <h3>MCP Vulnerabilities</h3>
