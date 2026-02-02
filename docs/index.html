@@ -411,6 +411,12 @@ by the user.&lt;/system&gt;
         <p>These aren't theoretical attacks - they're documented vulnerabilities found in widely-used AI systems:</p>
 
         <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>OpenClaw: The Lethal Trifecta Made Viral</h4>
+            <p>OpenClaw (formerly Clawdbot/Moltbot), the open-source AI agent that gained 100K+ GitHub stars in three days, exhibits a textbook <a href="https://www.theregister.com/2026/02/02/openclaw_security_issues/">lethal trifecta</a>: access to private data, exposure to untrusted content, and ability to perform external actions. <a href="https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare">Cisco tested a third-party skill</a> that instructed the agent to silently exfiltrate data via curl commands. Of 31,000 skills analyzed, 26% contained at least one vulnerability. <a href="https://venturebeat.com/security/openclaw-agentic-ai-security-risk-ciso-guide">VentureBeat warns</a> that 180,000 developers just made agentic AI security everyone's problem.</p>
+        </div>
+
+        <div class="incident">
             <div class="incident-date">January 2026</div>
             <h4>ZombieAgent: Persistent Memory Poisoning in ChatGPT</h4>
             <p><a href="https://www.radware.com/security/threat-advisories-and-attack-reports/zombieagent/">Radware security researchers discovered ZombieAgent</a>, an evolution of the ShadowLeak attack that persists in ChatGPT's memory system long-term. The attack uses pre-enumerated URLs to exfiltrate data by fetching them in sequence, turning ChatGPT's memory feature into a persistent backdoor. <a href="https://arstechnica.com/security/2026/01/chatgpt-falls-to-new-data-pilfering-attack-as-a-vicious-cycle-in-ai-continues/">Ars Technica notes</a> this represents "a vicious cycle in AI" where memory features designed for convenience become attack vectors.</p>
