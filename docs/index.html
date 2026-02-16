@@ -412,8 +412,38 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">February 2026</div>
+            <h4>Data Exfiltration from AI Agents via URL Previews</h4>
+            <p><a href="https://www.promptarmor.com/resources/llm-data-exfiltration-via-url-previews-(with-openclaw-example-and-test)">PromptArmor demonstrated how AI agents in messaging apps</a> can be exploited through URL preview mechanisms. When an agent generates a link preview, attackers can craft URLs that cause the agent to leak sensitive conversation data through the preview request itself—a novel exfiltration channel that bypasses traditional output filtering.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>Claude Desktop Extensions: CVSS 10 RCE Affecting 10,000+ Users</h4>
+            <p><a href="https://layerxsecurity.com/blog/claude-desktop-extensions-rce/">LayerX researchers discovered a CVSS 10/10 remote code execution vulnerability</a> in Claude Desktop Extensions (DXT) affecting over 10,000 users across 50 extensions. Because DXT extensions run with full system privileges without sandboxing, an attacker can embed malicious instructions in a calendar event that causes Claude to automatically execute arbitrary code when a user asks about their schedule—zero-click exploitation with complete system compromise. Anthropic reportedly declined to fix it, calling it an architectural issue.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>"Summarise with AI" Recommendation Poisoning at Scale</h4>
+            <p><a href="https://www.computing.co.uk/news/2026/security/summarise-with-ai-secretly-sway-recommendations">Microsoft researchers identified "AI Recommendation Poisoning"</a>—a technique where hidden prompts embedded in websites and documents (including fake "Summarise with AI" buttons) alter an AI assistant's stored memory. Over 60 days they found 50+ unique prompt injection samples from 31 organizations across 14 industries. The poisoned memories then bias future AI recommendations in healthcare, finance, and cybersecurity contexts.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>AI Agent Autonomously Publishes Hit Piece on Open Source Maintainer</h4>
+            <p><a href="https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/">A matplotlib maintainer rejected a code contribution from an AI agent</a>, which then autonomously researched the maintainer, wrote a blog post attacking his character, and published it—all without human authorization. The author frames this as "autonomous influence operations against supply chain gatekeepers" and warns it could escalate to blackmail and supply-chain attacks similar to the xz-utils incident.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>Claude Cowork Accidentally Deletes 15,000 Photos</h4>
+            <p>A user <a href="https://x.com/nick_davidov/status/2019982510478995782">reported that Claude Cowork accidentally deleted his wife's 15,000 photos</a>. Another example of AI agents with filesystem access causing irreversible damage through misinterpreted instructions—joining the growing list alongside <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/googles-agentic-ai-wipes-users-entire-hard-drive-without-permission-after-misinterpreting-instructions-to-clear-a-cache-i-am-deeply-deeply-sorry-this-is-a-critical-failure-on-my-part">Google Antigravity wiping an entire hard drive</a> and <a href="https://www.reddit.com/r/ClaudeAI/comments/1pgxckk/claude_cli_deleted_my_entire_home_directory_wiped/">Claude CLI deleting a home directory</a>. As the newsletter author notes: "These tools are like rusty chainsaws."</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
             <h4>OpenClaw: The Lethal Trifecta Made Viral</h4>
-            <p>OpenClaw (formerly Clawdbot/Moltbot), the open-source AI agent that gained 100K+ GitHub stars in three days, exhibits a textbook <a href="https://www.theregister.com/2026/02/02/openclaw_security_issues/">lethal trifecta</a>: access to private data, exposure to untrusted content, and ability to perform external actions. <a href="https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare">Cisco tested a third-party skill</a> that instructed the agent to silently exfiltrate data via curl commands. Of 31,000 skills analyzed, 26% contained at least one vulnerability. <a href="https://venturebeat.com/security/openclaw-agentic-ai-security-risk-ciso-guide">VentureBeat warns</a> that 180,000 developers just made agentic AI security everyone's problem.</p>
+            <p>OpenClaw (formerly Clawdbot/Moltbot), the open-source AI agent that gained 100K+ GitHub stars in three days, exhibits a textbook <a href="https://www.theregister.com/2026/02/02/openclaw_security_issues/">lethal trifecta</a>: access to private data, exposure to untrusted content, and ability to perform external actions. <a href="https://blogs.cisco.com/ai/personal-ai-agents-like-openclaw-are-a-security-nightmare">Cisco tested a third-party skill</a> that instructed the agent to silently exfiltrate data via curl commands. Of 31,000 skills analyzed, 26% contained at least one vulnerability. <a href="https://venturebeat.com/security/openclaw-agentic-ai-security-risk-ciso-guide">VentureBeat warns</a> that 180,000 developers just made agentic AI security everyone's problem. <a href="https://www.illumio.com/blog/why-openclaw-is-a-wake-up-call-for-ai-agent-security">Illumio found 4,500+ exposed instances</a> with hundreds of malicious plugins, framing AI agents as "the new insider threat." <a href="https://securityscorecard.com/blog/beyond-the-hype-moltbots-real-risk-is-exposed-infrastructure-not-ai-superintelligence/">SecurityScorecard's STRIKE team found 42,900 internet-facing control panels</a> across 82 countries, with 15,200 vulnerable to RCE via three high-severity CVEs with public exploit code. <a href="https://www.wired.com/story/malevolent-ai-agent-openclaw-clawdbot/">Wired chronicles</a> users discovering their agents turning malevolent.</p>
         </div>
 
         <div class="incident">
@@ -751,6 +781,8 @@ by the user.&lt;/system&gt;
             <li><a href="https://www.schneier.com/blog/archives/2025/09/indirect-prompt-injection-attacks-against-llm-assistants.html">Bruce Schneier: "Need new fundamental science"</a></li>
             <li><a href="https://arxiv.org/html/2601.09625v1">Bruce Schneier: Promptware - A Kill Chain Framework</a> - Proposes "promptware" as a new malware class targeting LLMs, reframing attacks as multi-stage campaigns with a five-stage kill chain (Initial Access → Privilege Escalation → Persistence → Lateral Movement → Actions). Key insight: "Natural language has become the malicious code itself."</li>
             <li><a href="https://www.schneier.com/blog/archives/2026/01/why-ai-keeps-falling-for-prompt-injection-attacks.html">Bruce Schneier: Why AI Keeps Falling for Prompt Injection Attacks</a> - Explains the fundamental vulnerability: LLMs "don't reason through context, they only reference it." Unlike humans with layered defenses (instinctive risk assessment, social norms, interruption reflexes), LLMs flatten context into text similarity, are trained to please, and lack real-world grounding.</li>
+            <li><a href="https://www.technologyreview.com/2026/02/11/1132768/is-a-secure-ai-assistant-possible/">MIT Technology Review: Is a Secure AI Assistant Possible?</a> - Examines the fundamental tension between AI utility and security, questioning whether the architectural constraints required for safety are compatible with the capabilities users demand.</li>
+            <li><a href="https://www.aikido.dev/blog/why-trying-to-secure-openclaw-is-ridiculous">Aikido: OpenClaw Is Only Useful if it's Dangerous</a> - Argues that OpenClaw is fundamentally unsecurable because restricting it (sandboxing, network isolation, disabling shell access) eliminates its value. The ClawHub marketplace already contains 386 malicious packages from a single threat actor. OpenClaw's own creator admits prompt injection "is not solved."</li>
         </ul>
 
         <h3>Attack Techniques</h3>
