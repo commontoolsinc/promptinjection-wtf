@@ -412,6 +412,18 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">February 2026</div>
+            <h4>RoguePilot: GitHub Copilot Repository Takeover via Prompt Injection</h4>
+            <p><a href="https://orca.security/resources/blog/roguepilot-github-copilot-vulnerability/">Orca Security discovered RoguePilot</a>, a passive prompt injection attack against GitHub Copilot in Codespaces. Attackers embed hidden instructions in GitHub issue HTML comments that are invisible in the UI but processed by Copilot as context. When a developer opens a Codespace from the issue, Copilot is manipulated into checking out a malicious PR containing symlinks to sensitive files, reading the stolen GITHUB_TOKEN, and exfiltrating it via a crafted JSON schema URL that VS Code automatically fetches—achieving full repository takeover with zero user interaction beyond opening the issue.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
+            <h4>SANDWORM_MODE: npm Worm Poisons AI Toolchains via MCP Prompt Injection</h4>
+            <p><a href="https://socket.dev/blog/sandworm-mode-npm-worm-ai-toolchain-poisoning">Socket discovered SANDWORM_MODE</a>, a self-replicating npm worm distributed through 19 typosquatted packages that weaponizes prompt injection as a post-exploitation technique. After initial infection via npm install, the worm installs a rogue MCP server disguised as a legitimate developer tool, with prompt injection payloads embedded in tool descriptions. When AI coding assistants (Claude Desktop, Cursor, VS Code Continue, Windsurf) load the MCP server, the injected prompts instruct the AI to silently exfiltrate SSH keys, AWS credentials, npm tokens, and API keys—then uses harvested CI/CD credentials to self-propagate into downstream projects.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">February 2026</div>
             <h4>Data Exfiltration from AI Agents via URL Previews</h4>
             <p><a href="https://www.promptarmor.com/resources/llm-data-exfiltration-via-url-previews-(with-openclaw-example-and-test)">PromptArmor demonstrated how AI agents in messaging apps</a> can be exploited through URL preview mechanisms. When an agent generates a link preview, attackers can craft URLs that cause the agent to leak sensitive conversation data through the preview request itself—a novel exfiltration channel that bypasses traditional output filtering.</p>
         </div>
